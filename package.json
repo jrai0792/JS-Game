@@ -1,0 +1,23 @@
+{
+  "name": "js-game",
+  "version": "1.0.0",
+  "description": "This is capstone project for Microverse Main Technical Curriculum - Javascript section.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrai0792/JS-Game.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrai0792/JS-Game/issues"
+  },
+  "homepage": "https://github.com/jrai0792/JS-Game#readme",
+  "devDependencies": {
+    "webpack": "^5.28.0",
+    "webpack-cli": "^4.6.0"
+  }
+}

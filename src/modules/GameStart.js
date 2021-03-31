@@ -7,11 +7,16 @@ class GameStart extends Phaser.Scene{
     super({key: 'GameStart'});
   }
   preload() {
-    this.load.image('first', '../src/assets/gamestart.jpeg');
+    this.load.image('background', '../src/assets/game-bg.jpeg');
+    this.load.image('player', '../src/assets/player.png');
+    this.load.image('bomb1', '../src/assets/bomb1.png');
+    
   }
 
   create() {
-    this.add.image(200, 100, 'first');
+    this.tileSprite = this.add.tileSprite(400, 300, 0, 0, 'background');
+    this.add.image(400, 300, 0, 0, 'player');
+
   }
 }
 

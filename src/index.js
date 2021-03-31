@@ -6,8 +6,8 @@ import GameEnd from './modules/GameEnd'
 const config = {
   type: Phaser.AUTO,
   parent: 'content',
-  width: 620,
-  height: 440,
+  width: 1400,
+  height: 700,
   // zoom: 2,
   pixelArt : true,
   physics: {

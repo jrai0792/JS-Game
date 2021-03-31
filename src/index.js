@@ -8,7 +8,7 @@ const config = {
   parent: 'content',
   width: 620,
   height: 440,
-  zoom: 2,
+  // zoom: 2,
   pixelArt : true,
   physics: {
     default: 'arcade',

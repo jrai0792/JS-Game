@@ -1,6 +1,8 @@
+import Phaser from "phaser";
+
 class GameMain extends Phaser.Scene {
   constructor() {
-    super({key: "GameMain"});
+    super({key: 'GameMain'});
   }
 
   preload() {
@@ -8,7 +10,8 @@ class GameMain extends Phaser.Scene {
   }
 
   create() {
-    this.scene.start(GameStart);
   }
 
 }
+
+export default GameMain;

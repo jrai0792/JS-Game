@@ -1,7 +1,8 @@
 import Phaser from "phaser";
-import GameStart from './modules/GameStart'
-import GameMain from './modules/GameMain'
-import GameEnd from './modules/GameEnd'
+import GameStart from './scenes/GameStart'
+import GameMain from './scenes/GameMain'
+import GameEnd from './scenes/GameEnd'
+import Player from './players/Player'
 
 const config = {
   type: Phaser.AUTO,
@@ -29,3 +30,4 @@ const game = new Phaser.Game(config);
 game.scene.add(GameStart);
 
 game.scene.start(GameStart);
+

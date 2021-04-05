@@ -6,9 +6,9 @@ import GameEnd from './modules/GameEnd'
 const config = {
   type: Phaser.AUTO,
   parent: 'content',
-  width: 1400,
-  height: 700,
-  // zoom: 2,
+  width: 700,
+  height: 380,
+  zoom: 2,
   pixelArt : true,
   physics: {
     default: 'arcade',
@@ -24,6 +24,7 @@ const config = {
 };
 
 const game = new Phaser.Game(config);
+
 
 game.scene.add(GameStart);
 

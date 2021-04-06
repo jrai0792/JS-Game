@@ -62,6 +62,27 @@ class GameStart extends Phaser.Scene{
     player.body.setGravityY(300);
 
     this.physics.add.collider(player, platforms);
+
+    let cursors = this.input.keyboard.createCursorKeys();
+
+    if(cursors.left.isDown) {
+      player.setVelocity(-160);
+      player.anims.play('left', true);
+    }
+    else if(cursors.right.isDown) {
+      player.setVelocity(160);
+      player.anims.play('right', true);
+    }
+    else {
+      player.setVelocity(0);
+      player.anims.play('turn');
+    }
+
+    if (cursors.up.isDown && player.body.touching.down)
+      {
+        player.setVelocityY(-330);
+      }
+
   }
 }
 

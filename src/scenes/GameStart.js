@@ -24,7 +24,7 @@ class GameStart extends Phaser.Scene{
 
     this.add.image(400,300,'sky');
     this.add.image(400,300,'star');
-    var platforms;
+    let platforms;
 
     platforms = this.physics.add.staticGroup();
     platforms.create(400, 568,'ground').setScale(2).refreshBody();
@@ -32,7 +32,7 @@ class GameStart extends Phaser.Scene{
     platforms.create(50, 250, 'ground');
     platforms.create(550, 220, 'ground');
 
-    var player = this.physics.add.sprite(100,450, 'dude');
+     let  player = this.physics.add.sprite(100,450, 'dude');
 
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
@@ -57,7 +57,7 @@ class GameStart extends Phaser.Scene{
       repeat: -1
     });
 
-    player.body.setGravityY(300);
+    // player.body.setGravityY(300);
 
     this.physics.add.collider(player, platforms);
 
@@ -94,11 +94,18 @@ class GameStart extends Phaser.Scene{
     this.physics.add.collider(stars, platforms);
 
     function collectStar (player, star)
-{
-    star.disableBody(true, true);
-}
+      {
+          star.disableBody(true, true);
+          score += 10;
+          scoreText.setText('Score: ' + score);
+      }
 
     this.physics.add.overlap(player, stars, collectStar, null, this);
+
+    let score = 0;
+    let scoreText;
+
+    scoreText = this.add.text(16,16, 'Score: 0', {fontSize: '32px', fill: 'white'});
   }
 
   update() {

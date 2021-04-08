@@ -6,7 +6,7 @@ class GameMain extends Phaser.Scene {
   }
 
   preload() {
-
+    
   }
 
   create() {

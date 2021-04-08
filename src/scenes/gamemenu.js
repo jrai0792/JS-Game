@@ -8,15 +8,11 @@ class GameMenu extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sky', '../src/assets/sky.png');
     this.load.image('highScore', '../src/assets/score.jpeg');
     this.load.image('playBtn', '../src/assets/play-btn.png');
   }
 
   create() {
-    // this.bg = this.add.image(400,300,'sky');
-    // this.bg.displayHeight = this.sys.game.config.height;
-    // this.bg.scaleX = this.bg.scaleY;
     this.playBtn = this.physics.add.sprite(1050,250,'playBtn').setScale(0.1);
     this.score = this.physics.add.sprite(1050,350,'highScore').setScale(0.3);
 

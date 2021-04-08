@@ -45,7 +45,7 @@ window.onload = function () {
       GameMain,
       GameEnd
     ],
-    backgroundColor: 	0x66ffd9
+    // backgroundColor: 	0x66ffd9
   };
   
   game = new Phaser.Game(config);

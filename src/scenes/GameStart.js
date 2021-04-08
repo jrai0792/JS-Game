@@ -3,6 +3,8 @@ import Phaser from "phaser"
 
 class GameStart extends Phaser.Scene{
 
+  // private keys = Phaser.Input.Keyboard.CursorKeys;
+
   constructor() {
     super({key: 'GameStart'});
   }
@@ -36,12 +38,13 @@ class GameStart extends Phaser.Scene{
     //Bomb group
     let bombs = this.physics.add.group();
     
-
-    let  player = this.physics.add.sprite(100,450, 'dude');
+    //Game player
+    let  player = this.player =this.physics.add.sprite(100,450, 'dude');
 
     player.setBounce(0.2);
     player.setCollideWorldBounds(true);
 
+    //Player animations
     this.anims.create({
       key: 'left',
       frames: this.anims.generateFrameNumbers('dude', {start:0, end:3}),
@@ -56,19 +59,34 @@ class GameStart extends Phaser.Scene{
     });
 
     this.anims.create({
+      key: 'up',
+      frames: this.anims.generateFrameNumbers('dude', {start: 0, end: 8}),
+      frameRate: 20,
+      repeat: -1
+    });
+
+    this.anims.create({
       key: 'right',
       frames: this.anims.generateFrameNumbers('dude', {start: 5, end: 8}),
       frameRate: 10,
       repeat: -1
     });
 
-    // player.body.setGravityY(300);
+
+    //setting star animation
+    this.anims.create({
+      frames: this.anims.generateFrameNumbers('star', {start: 0, end: 3}),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    player.body.setGravityY(300);
 
     this.physics.add.collider(player, platforms);
 
     this.physics.add.collider(bombs, platforms);
 
-    var cursors = this.input.keyboard.createCursorKeys();
+    this.cursors =this.input.keyboard.createCursorKeys();
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 
@@ -83,26 +101,7 @@ class GameStart extends Phaser.Scene{
           gameOver = true;
       }
 
-
-    if(cursors.left.isDown) {
-      player.setVelocity(-160);
-      player.anims.play('left', true);
-    }
-    else if(cursors.right.isDown) {
-      player.setVelocity(160);
-      player.anims.play('right', true);
-    }
-    else {
-      player.setVelocity(0);
-      player.anims.play('turn');
-    }
-
-    if (cursors.up.isDown && player.body.touching.down)
-      {
-        player.setVelocityY(-330);
-      }
-
-    var stars = this.physics.add.group({
+    let stars = this.physics.add.group({
       key: 'star',
       repeat: 11,
       setXY: {x: 12, y:0, stepX: 70}
@@ -147,7 +146,27 @@ class GameStart extends Phaser.Scene{
   }
 
   update() {
+    if(this.cursors.left.isDown) {
+      this.player.setVelocity(-160);
+      this.player.anims.play('left', true);
+    }
+    else if(this.cursors.right.isDown) {
+      this.player.setVelocity(160);
+      this.player.anims.play('right', true);
+    } 
+    else if(this.cursors.up.isDown) {
+      this.player.setVelocityY(-160);
+      this.player.anims.play('up', true);
+    }
+    else {
+      this.player.setVelocity(0);
+      this.player.anims.play('turn');
+    }
 
+    if (this.cursors.up.isDown && this.player.body.touching.down)
+      {
+        this.player.setVelocityY(-330);
+      }
 
   }
 }

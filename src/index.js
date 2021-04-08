@@ -4,12 +4,14 @@ import GameMain from './scenes/GameMain'
 import GameEnd from './scenes/GameEnd'
 import Player from './players/Player'
 
+var player;
+
 const config = {
   type: Phaser.AUTO,
   parent: 'content',
-  width: 700,
-  height: 380,
-  zoom: 2,
+  width: 800,
+  height: 600,
+  // zoom: 2,
   pixelArt : true,
   physics: {
     default: 'arcade',

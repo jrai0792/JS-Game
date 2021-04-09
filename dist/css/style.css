@@ -2,6 +2,20 @@
   margin: 0;
   padding: 0;
   border: 0;
-  height: 100%;
-  width: 100%;
+  background-image: url('../../src/assets/sky.png');
+  background-size: cover;
+}
+
+.play-btn {
+  width : 15%;
+  position: absolute;
+  right: 10%;
+  top: 40%
+}
+
+.score-btn {
+  width : 15%;
+  position: absolute;
+  right: 10%;
+  top: 60%
 }

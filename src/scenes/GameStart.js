@@ -24,21 +24,24 @@ class GameStart extends Phaser.Scene{
 
   create() {
 
-    this.add.image(400,300,'sky');
-    this.add.image(400,300,'star');
-    let platforms;
+    //Game Background
+    // this.add.image(400,300,'sky');
+    // this.add.image(400,300,'star');
+
+    this.gameOver = false;
 
     //Platform group
+    let platforms;
     platforms = this.physics.add.staticGroup();
-    platforms.create(400, 568,'ground').setScale(2).refreshBody();
-    platforms.create(600, 400, 'ground');
+    platforms.create(400, 668,'ground').setScale(5.2).refreshBody();
+    platforms.create(900, 400, 'ground').setScale(2).refreshBody();
     platforms.create(50, 250, 'ground');
     platforms.create(550, 220, 'ground');
 
     //Bomb group
     let bombs = this.physics.add.group();
     
-    //Game player
+    //Game player and its settings
     let  player = this.player =this.physics.add.sprite(100,450, 'dude');
 
     player.setBounce(0.2);
@@ -80,15 +83,9 @@ class GameStart extends Phaser.Scene{
       repeat: -1
     });
 
-    player.body.setGravityY(300);
-
-    this.physics.add.collider(player, platforms);
-
-    this.physics.add.collider(bombs, platforms);
+    // this.player.body.setGravityY(300);
 
     this.cursors =this.input.keyboard.createCursorKeys();
-
-    this.physics.add.collider(player, bombs, hitBomb, null, this);
 
     function hitBomb (player, bomb)
       {
@@ -101,17 +98,26 @@ class GameStart extends Phaser.Scene{
           gameOver = true;
       }
 
+    //Star Group
     let stars = this.physics.add.group({
       key: 'star',
       repeat: 11,
-      setXY: {x: 12, y:0, stepX: 70}
+      setXY: {x: 12, y:0, stepX: 70},
+      gravity: {y: 300}
     });
 
     stars.children.iterate(function (child) {
+
       child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+
     });
 
+    this.physics.add.collider(player, platforms);
+    this.physics.add.collider(bombs, platforms);
     this.physics.add.collider(stars, platforms);
+
+    this.physics.add.overlap(player, stars, collectStar, null, this);
+    this.physics.add.collider(player, bombs, hitBomb, null, this);
 
     function collectStar (player, star)
       {
@@ -137,21 +143,26 @@ class GameStart extends Phaser.Scene{
 
       }
 
-    this.physics.add.overlap(player, stars, collectStar, null, this);
-
     let score = 0;
     let scoreText;
 
+    //Score
     scoreText = this.add.text(16,16, 'Score: 0', {fontSize: '32px', fill: 'white'});
+
   }
 
   update() {
+
+    if(this.gameOver) {
+      return;
+    }
+
     if(this.cursors.left.isDown) {
       this.player.setVelocity(-160);
       this.player.anims.play('left', true);
     }
     else if(this.cursors.right.isDown) {
-      this.player.setVelocity(160);
+      this.player.setVelocityX(160);
       this.player.anims.play('right', true);
     } 
     else if(this.cursors.up.isDown) {

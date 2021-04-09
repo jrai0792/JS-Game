@@ -8,35 +8,38 @@ import Player from './players/Player'
 let game;
 
 let resize = () => {
-  const canvas = document.querySelector('canvas');
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const windowRatio = width/height;
-  const gameRatio = game.config.width / game.config.height;
+  let canvas = document.querySelector('canvas');
+  let windowWidth = window.innerWidth;
+  let windowHeight = window.innerHeight;
+  let windowRatio = windowWidth/windowHeight;
+  let gameRatio = game.config.width / game.config.height;
 
-  if(windowRatio<gameRatio){
+  if(windowRatio < gameRatio){
     
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${width / gameRatio}px`;
+    canvas.style.width = `${windowWidth}px`;
+    canvas.style.height = `${windowWidth / gameRatio}px`;
   }else {
-    canvas.style.width = `${height * gameRatio}px`;
-    canvas.style.height = `${height}px`;
+    canvas.style.width = `${windowHeight * gameRatio}px`;
+    canvas.style.height = `${windowHeight}px`;
   }
 };
+
+    
+
 
 window.onload = function () {
 
   const config = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     parent: 'game',
     width: 1430,
     height: 770,
-    // zoom: 2,
     pixelArt : true,
     physics: {
       default: 'arcade',
       arcade: {
-        gravity: {x:0,  y: 0 }
+        gravity: {x:1,  y:2 },
+        debug: false
       }
     },
     scene: [
@@ -44,8 +47,7 @@ window.onload = function () {
       GameStart,
       GameMain,
       GameEnd
-    ],
-    // backgroundColor: 	0x66ffd9
+    ]
   };
   
   game = new Phaser.Game(config);

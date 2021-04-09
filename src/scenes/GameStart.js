@@ -1,4 +1,5 @@
 import Phaser from "phaser"
+import game from '../index'
 // import start from "../assets/gamestart.jpeg"
 
 class GameStart extends Phaser.Scene{
@@ -23,10 +24,6 @@ class GameStart extends Phaser.Scene{
   }
 
   create() {
-
-    //Game Background
-    // this.add.image(400,300,'sky');
-    // this.add.image(400,300,'star');
 
     this.gameOver = false;
 
@@ -87,24 +84,29 @@ class GameStart extends Phaser.Scene{
 
     this.cursors =this.input.keyboard.createCursorKeys();
 
-    function hitBomb (player, bomb)
-      {
-          this.physics.pause();
+    function hitBomb (player, bomb){
+      this.physics.pause();
 
-          player.setTint(0xff0000);
+      player.setTint(0xff0000);
 
-          player.anims.play('turn');
+      player.anims.play('turn');
 
-          gameOver = true;
-      }
+      gameOver = true;
+    }
+      
 
-    //Star Group
-    let stars = this.physics.add.group({
-      key: 'star',
-      repeat: 11,
-      setXY: {x: 12, y:0, stepX: 70},
-      gravity: {y: 300}
-    });
+    //Add star group
+    let stars = this.physics.add.group();
+    stars.enableBody = true;
+    stars.physicsBodyType = Phaser.Physics.ARCADE;
+    
+    //setup stars physics body
+    for(let i=0; i<12; i++) {
+      let star = stars.create(200+i*48, 50, 'star');
+      star.body.collideWorldBounds = true;
+      star.body.velocity.setTo(200,200);
+      star.body.bounce.set(1);
+    }
 
     stars.children.iterate(function (child) {
 
@@ -182,4 +184,4 @@ class GameStart extends Phaser.Scene{
   }
 }
 
-export default GameStart;
+export default GameStart ;

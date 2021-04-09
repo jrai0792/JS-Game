@@ -30,7 +30,7 @@ let resize = () => {
 window.onload = function () {
 
   const config = {
-    type: Phaser.CANVAS,
+    type: Phaser.AUTO,
     parent: 'game',
     width: 1430,
     height: 770,

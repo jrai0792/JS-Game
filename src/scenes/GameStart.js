@@ -94,7 +94,7 @@ class GameStart extends Phaser.Scene{
 
       player.anims.play('turn');
 
-      gameOver = true;
+      this.gameOver = true;
     }
       
 
@@ -133,19 +133,16 @@ class GameStart extends Phaser.Scene{
           score += 10;
           scoreText.setText('Score: ' + score);
 
-          if (stars.countActive(true) < 7)
+          if (stars.countActive(true) < 9)
             {
-
               addStarGroup();
                 let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
                 for(let i=0; i<4; i++){
                   let bomb = bombs.create(x, 16, 'bomb');
                   bomb.setBounce(1);
                   bomb.setCollideWorldBounds(true);
-                  bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+                  bomb.setVelocity(Phaser.Math.Between(-300, 300), 30);
                 }
-                
-        
             }
 
       }
@@ -161,7 +158,8 @@ class GameStart extends Phaser.Scene{
   update() {
 
     if(this.gameOver) {
-      return;
+      // return;
+      this.scene.start('GameEnd');
     }
 
     if(this.cursors.left.isDown) {

@@ -167,7 +167,7 @@ class GameStart extends Phaser.Scene{
     }
 
     if(this.cursors.left.isDown) {
-      this.player.setVelocity(-160);
+      this.player.setVelocityX(-160);
       this.player.anims.play('left', true);
     }
     else if(this.cursors.right.isDown) {

@@ -1,9 +1,8 @@
 import Phaser from "phaser";
 import GameStart from './scenes/GameStart'
-import GameMain from './scenes/GameMain'
+import PlayerName from './scenes/playername'
 import GameEnd from './scenes/GameEnd';
 import GameMenu from './scenes/gamemenu';
-import Player from './players/Player'
 
 let game;
 
@@ -24,14 +23,11 @@ let resize = () => {
   }
 };
 
-    
-
-
 window.onload = function () {
 
   const config = {
     type: Phaser.AUTO,
-    parent: 'game',
+    parent: 'phaser-example',
     width: 1430,
     height: 770,
     pixelArt : true,
@@ -45,7 +41,7 @@ window.onload = function () {
     scene: [
       GameMenu,
       GameStart,
-      GameMain,
+      PlayerName,
       GameEnd
     ]
   };

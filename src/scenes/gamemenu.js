@@ -17,11 +17,14 @@ class GameMenu extends Phaser.Scene {
 
     this.playBtn = this.physics.add.sprite(1050,250,'playBtn').setScale(0.1);
     this.score = this.physics.add.sprite(1050,350,'highScore').setScale(0.3);
-
+    // this.add.text(500, 230, 'Player Name', { fontSize: '75px', fill: '#ffffff' });
     this.playBtn.setInteractive().on('pointerdown', function GameStart() {
-      this.scene.start('GameStart');
+      this.scene.start('PlayerName');
     }, this);
+
+
+    
   }
-}
+}        
 
 export default GameMenu;

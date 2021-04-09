@@ -53,6 +53,13 @@ class GameStart extends Phaser.Scene{
     });
 
     this.anims.create({
+      key: 'down',
+      frames: this.anims.generateFrameNumbers('dude', {start:0, end:3}),
+      frameRate: 10,
+      repeat: -1
+    });
+
+    this.anims.create({
       key: 'turn',
       frames: [{key: 'dude', frame:4}],
       frameRate: 20
@@ -169,6 +176,10 @@ class GameStart extends Phaser.Scene{
     } 
     else if(this.cursors.up.isDown) {
       this.player.setVelocityY(-160);
+      this.player.anims.play('up', true);
+    }
+    else if(this.cursors.down.isDown) {
+      this.player.setVelocityY(160);
       this.player.anims.play('up', true);
     }
     else {

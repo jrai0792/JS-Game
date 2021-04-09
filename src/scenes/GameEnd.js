@@ -18,7 +18,7 @@ class GameEnd extends Phaser.Scene {
     this.add.image(600,500, 'score').setScale(0.1);
 
     this.playBtn.setInteractive().on('pointerdown', function GameStart() {
-      this.scene.start('GameStart');
+      this.scene.start('PlayerName');
     }, this);
 
   }

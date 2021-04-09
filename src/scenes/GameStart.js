@@ -1,10 +1,7 @@
 import Phaser from "phaser"
-import game from '../index'
-// import start from "../assets/gamestart.jpeg"
 
 class GameStart extends Phaser.Scene{
 
-  // private keys = Phaser.Input.Keyboard.CursorKeys;
 
   constructor() {
     super({key: 'GameStart'});
@@ -24,7 +21,6 @@ class GameStart extends Phaser.Scene{
   }
 
   create() {
-
     this.gameOver = false;
 
     //Platform group
@@ -108,12 +104,15 @@ class GameStart extends Phaser.Scene{
     stars.physicsBodyType = Phaser.Physics.ARCADE;
     
     //setup stars physics body
-    for(let i=0; i<12; i++) {
-      let star = stars.create(200+i*48, 50, 'star');
-      star.body.collideWorldBounds = true;
-      star.body.velocity.setTo(200,200);
-      star.body.bounce.set(1);
+    function addStarGroup() {
+      for(let i=0; i<12; i++) {
+        let star = stars.create(200+i*48, 50, 'star');
+        star.body.collideWorldBounds = true;
+        star.body.velocity.setTo(200,200);
+        star.body.bounce.set(1);
+      }
     }
+    addStarGroup();
 
     stars.children.iterate(function (child) {
 
@@ -134,19 +133,18 @@ class GameStart extends Phaser.Scene{
           score += 10;
           scoreText.setText('Score: ' + score);
 
-          if (stars.countActive(true) === 0)
+          if (stars.countActive(true) < 7)
             {
-                stars.children.iterate(function (child) {
 
-                    child.enableBody(true, child.x, 0, true, true);
-
-                });
-                var x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-
-                var bomb = bombs.create(x, 16, 'bomb');
-                bomb.setBounce(1);
-                bomb.setCollideWorldBounds(true);
-                bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+              addStarGroup();
+                let x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
+                for(let i=0; i<4; i++){
+                  let bomb = bombs.create(x, 16, 'bomb');
+                  bomb.setBounce(1);
+                  bomb.setCollideWorldBounds(true);
+                  bomb.setVelocity(Phaser.Math.Between(-200, 200), 20);
+                }
+                
         
             }
 

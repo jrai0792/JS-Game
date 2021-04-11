@@ -23,19 +23,6 @@ class GameStart extends Phaser.Scene{
   create() {
 
 
-    // const submitBtn = document.querySelector('button');
-
-    // submitBtn.onclick = () => {
-    //   const name = document.querySelector('input').value;
-    //   if (validateName(name) === false) {
-    //     this.add.text(540, 500, 'Name too short/too long', { fontSize: '25px', fill: '#ffffff' });
-    //   } else {
-    //     this.registry.set('playerName', name);
-    //     this.registry.set('score', this.highScores);
-    //     this.scene.start('Menu');
-    //   }
-    // };
-
     this.gameOver = false;
 
     //Platform group

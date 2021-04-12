@@ -27,8 +27,8 @@ class PlayerName extends Phaser.Scene {
           if(element.children[i].tagName === 'INPUT'){  
             let btn = this.add.text(10,100 + 20*i,'');
             element.children[i].addEventListener('input',()=>{
-              btn.setText(element.children[i].value);
-                      
+              this.registry.set('PlayerName', element.children[i].value);
+              // console.log(this.registry.get('PlayerName'));       
             })
           }
           // it is the button

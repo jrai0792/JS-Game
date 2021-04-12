@@ -1,4 +1,5 @@
-import Phaser from "phaser"
+import Phaser from "phaser";
+import {storeScores} from '../local-storage';
 
 class GameStart extends Phaser.Scene{
 
@@ -152,15 +153,19 @@ class GameStart extends Phaser.Scene{
     this.score = 0;
     let scoreText;
 
-    //Score
-    scoreText = this.add.text(16,16, 'Score: 0', {fontSize: '32px', fill: 'white'});
+    this.playername = this.registry.get('PlayerName');
 
+    //Score
+    this.add.text(10,10,`Hi ${this.playername}`, {fontSize: '32px', fill: 'white'});
+    scoreText = this.add.text(20,46, 'Score: 0', {fontSize: '32px', fill: 'white'});
+    
   }
 
   update() {
 
     if(this.gameOver) {
-      // return;
+      
+      storeScores(this.score);
       this.scene.start('GameEnd');
     }
 

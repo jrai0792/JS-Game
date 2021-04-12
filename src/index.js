@@ -3,6 +3,7 @@ import GameStart from './scenes/GameStart'
 import PlayerName from './scenes/playername'
 import GameEnd from './scenes/GameEnd';
 import GameMenu from './scenes/gamemenu';
+import Score from './scenes/score';
 
 let game;
 
@@ -42,7 +43,8 @@ window.onload = function () {
       GameMenu,
       GameStart,
       PlayerName,
-      GameEnd
+      GameEnd,
+      Score
     ]
   };
   

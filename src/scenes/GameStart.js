@@ -132,8 +132,8 @@ class GameStart extends Phaser.Scene{
     function collectStar (player, star)
       {
           star.disableBody(true, true);
-          score += 10;
-          scoreText.setText('Score: ' + score);
+          this.score += 10;
+          scoreText.setText('Score: ' + this.score);
 
           if (stars.countActive(true) < 9)
             {
@@ -149,7 +149,7 @@ class GameStart extends Phaser.Scene{
 
       }
 
-    let score = 0;
+    this.score = 0;
     let scoreText;
 
     //Score

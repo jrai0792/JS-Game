@@ -22,7 +22,9 @@ class GameMenu extends Phaser.Scene {
       this.scene.start('PlayerName');
     }, this);
 
-
+    this.score.setInteractive().on('pointerdown', function Score() {
+      this.scene.start('Score');
+    }, this);
     
   }
 }        

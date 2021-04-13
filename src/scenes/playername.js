@@ -16,16 +16,13 @@ class PlayerName extends Phaser.Scene {
         if (element && element.style.display === 'none') {
           element.style.display = 'block';
 
-          for (let i = 0; i < element.children.length; i++) {
+          for (let i = 0; i < element.children.length; i += 1) {
           // it is an input element
             if (element.children[i].tagName === 'INPUT') {
-              const btn = this.add.text(10, 100 + 20 * i, '');
               element.children[i].addEventListener('input', () => {
                 this.registry.set('PlayerName', element.children[i].value);
               });
-            }
-            // it is the button
-            else {
+            } else {
               element.children[i].addEventListener('click', () => {
                 element.style.display = 'none';
                 this.scene.start('GameStart');

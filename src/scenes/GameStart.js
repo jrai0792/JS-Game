@@ -23,8 +23,8 @@ class GameStart extends Phaser.Scene {
     this.gameOver = false;
 
     // Platform group
-    let platforms;
-    platforms = this.physics.add.staticGroup();
+    // let platforms;
+    const platforms = this.physics.add.staticGroup();
     platforms.create(400, 668, 'ground').setScale(5.2).refreshBody();
     platforms.create(900, 400, 'ground').setScale(2).refreshBody();
     platforms.create(50, 250, 'ground');
@@ -34,6 +34,7 @@ class GameStart extends Phaser.Scene {
     const bombs = this.physics.add.group();
 
     // Game player and its settings
+    /* eslint-disable-next-line */
     const player = this.player = this.physics.add.sprite(100, 450, 'dude');
 
     player.setBounce(0.2);
@@ -86,7 +87,7 @@ class GameStart extends Phaser.Scene {
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
-    function hitBomb(player, bomb) {
+    function hitBomb(player) {
       this.physics.pause();
 
       player.setTint(0xff0000);
@@ -104,7 +105,7 @@ class GameStart extends Phaser.Scene {
 
     // setup stars physics body
     function addStarGroup() {
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i < 12; i += 1) {
         const star = stars.create(200 + i * 48, 50, 'star');
         star.body.collideWorldBounds = true;
         star.body.velocity.setTo(200, 200);
@@ -120,9 +121,7 @@ class GameStart extends Phaser.Scene {
     this.physics.add.collider(player, platforms);
     this.physics.add.collider(bombs, platforms);
     this.physics.add.collider(stars, platforms);
-
-    this.physics.add.overlap(player, stars, collectStar, null, this);
-    this.physics.add.collider(player, bombs, hitBomb, null, this);
+    let scoreText;
 
     function collectStar(player, star) {
       star.disableBody(true, true);
@@ -132,7 +131,7 @@ class GameStart extends Phaser.Scene {
       if (stars.countActive(true) < 9) {
         addStarGroup();
         const x = (player.x < 400) ? Phaser.Math.Between(400, 800) : Phaser.Math.Between(0, 400);
-        for (let i = 0; i < 4; i++) {
+        for (let i = 0; i < 4; i += 1) {
           const bomb = bombs.create(x, 16, 'bomb');
           bomb.setBounce(1);
           bomb.setCollideWorldBounds(true);
@@ -141,8 +140,10 @@ class GameStart extends Phaser.Scene {
       }
     }
 
+    this.physics.add.overlap(player, stars, collectStar, null, this);
+    this.physics.add.collider(player, bombs, hitBomb, null, this);
+
     this.score = 0;
-    let scoreText;
 
     this.playername = this.registry.get('PlayerName');
 

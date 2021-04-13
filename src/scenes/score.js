@@ -7,7 +7,7 @@ class Score extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('backBtn', '../dist/back-btn.jpeg');
+    this.load.image('backBtn', '../src/assets/back-btn.jpeg');
   }
 
   create() {

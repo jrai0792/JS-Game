@@ -9,9 +9,9 @@ class GameEnd extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('gameover', '../dist/gameover.png');
-    this.load.image('play', '../dist/play-btn.png');
-    this.load.image('score', '../dist/score.png');
+    this.load.image('gameover', '../src/assets/gameover.png');
+    this.load.image('play', '../src/assets/play-btn.png');
+    this.load.image('score', '../src/assets/score.png');
   }
 
   create() {

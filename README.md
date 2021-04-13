@@ -39,15 +39,15 @@ One user can either play the game online by clicking here OR Clone from the git 
 
 # Prerequisites:
 
-To get this project up and running locally, "yarn install" is needed to be run in order to include all dependencies used for this project.
+To get this project up and running locally, "npm install" is needed to be run in order to include all dependencies used for this project.
 
 # To get this project set up on your local machine, follow these simple steps:
 
 1. Open Terminal.
 2. Navigate to your desired location to download the contents of this repository.
 3. Copy and paste the following code into the Terminal: git clone https://github.com/jrai0792/JS-Game
-4. Run "yarn install".
-5. Run "yarn run webpack-dev-server".
+4. Run "npm install".
+5. Run "npm run webpack-dev-server".
 
 ## Authors
 

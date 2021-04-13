@@ -6,9 +6,9 @@ class GameMenu extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image('sky', '../dist/assets/sky.png');
-    this.load.image('highScore', '../dist/assets/score.jpeg');
-    this.load.image('playBtn', '../dist/assets/play-btn.png');
+    this.load.image('sky', '../src/assets/sky.png');
+    this.load.image('highScore', '../src/assets/score.jpeg');
+    this.load.image('playBtn', '../src/assets/play-btn.png');
   }
 
   create() {

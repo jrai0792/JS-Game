@@ -17,7 +17,6 @@ class PlayerName extends Phaser.Scene {
           element.style.display = 'block';
 
           for (let i = 0; i < element.children.length; i += 1) {
-          // it is an input element
             if (element.children[i].tagName === 'INPUT') {
               element.children[i].addEventListener('input', () => {
                 this.registry.set('PlayerName', element.children[i].value);

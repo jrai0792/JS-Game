@@ -23,7 +23,6 @@ class GameStart extends Phaser.Scene {
     this.gameOver = false;
 
     // Platform group
-    // let platforms;
     const platforms = this.physics.add.staticGroup();
     platforms.create(400, 668, 'ground').setScale(5.2).refreshBody();
     platforms.create(900, 400, 'ground').setScale(2).refreshBody();
@@ -82,8 +81,6 @@ class GameStart extends Phaser.Scene {
       frameRate: 10,
       repeat: -1,
     });
-
-    // this.player.body.setGravityY(300);
 
     this.cursors = this.input.keyboard.createCursorKeys();
 
@@ -147,7 +144,6 @@ class GameStart extends Phaser.Scene {
 
     this.playername = this.registry.get('PlayerName');
 
-    // Score
     this.add.text(10, 10, `Hi ${this.playername}`, { fontSize: '32px', fill: 'white' });
     scoreText = this.add.text(20, 46, 'Score: 0', { fontSize: '32px', fill: 'white' });
   }

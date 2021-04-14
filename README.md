@@ -5,11 +5,11 @@ This is capstone project for Microverse Main Technical Curriculum - Javascript s
 
 ## Live Demo
 
-https://loving-jennings-668614.netlify.app/
+[@Live Demo](https://loving-jennings-668614.netlify.app/)
 
 ## Video Description
 
-https://www.loom.com/share/d76577639efc4266bb8124e99a045fe1
+[@Video Description](https://www.loom.com/share/d76577639efc4266bb8124e99a045fe1)
 
 ## How to Play
 

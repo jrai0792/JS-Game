@@ -1,7 +1,8 @@
 import axios from 'axios';
-import {getScore,sendScore,sorting} from '../leader-api';
 import { enableFetchMocks } from 'jest-fetch-mock';
-enableFetchMocks()
+import { getScore, sendScore } from '../leader-api';
+
+enableFetchMocks();
 
 jest.mock('axios');
 
@@ -17,7 +18,7 @@ describe('Post API', () => {
   it('Will post the score', async () => {
     axios.post.mockResolvedValue(
       {
-      data:
+        data:
      { result: 'Leaderboard score created correctly.' },
       },
     );
@@ -26,7 +27,7 @@ describe('Post API', () => {
   });
 
 
-  it(`Won't post the score to score API because score equals 0`, async () => {
+  it('Won\'t post the score to score API because score equals 0', async () => {
     axios.post.mockResolvedValue(
       {
         data:
@@ -37,5 +38,3 @@ describe('Post API', () => {
     expect(res.message).toEqual('You need to provide a valid score for the leaderboard');
   });
 });
-
-

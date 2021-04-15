@@ -1,3 +1,6 @@
+import fetch from 'node-fetch';
+
+
 const sendScore = async (playername, playerscore) => {
   const submit = {
     user: playername,

@@ -1,5 +1,5 @@
 # JS-Game
-This is capstone project for Microverse Main Technical Curriculum - Javascript section. This project consisted of building turn based RPG game using Phaser 3 library.
+This is capstone project for Microverse Main Technical Curriculum - JavaScript section. This project consisted of building turn based RPG game using Phaser 3 library.
 
 ![screenshot](./screenshot.png)
 
